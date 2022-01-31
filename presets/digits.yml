@@ -1,0 +1,52 @@
+model:
+  name: NeuralInterpreter
+  kwargs:
+    detach_patch_embeddings: false
+    image_input_channels: 3
+    image_size: 32
+    layerwise_positional_encoding: false
+    num_classes_in_dataset:
+      mnist: 10
+      mnistm: 10
+      svhn: 10
+    patch_size: 4
+    pre_positional_encoding: false
+    program_kwargs:
+      num_scripts: 1
+      script_kwargs:
+        function_pod_kwargs:
+          code_features: 192
+          detach_function_codes: false
+          detach_function_output_signatures: true
+          detach_function_signatures: true
+          kernel_kwargs:
+            initial_bandwidth: 1.0
+            straight_through: true
+            truncation: 1.4202567871309753
+          loc_pod_kwargs:
+            relative_positional_encoder: true
+            relative_positional_encoder_kwargs:
+              function_head_mixing_mode: sep_sum
+              share_positional_encoding_between_functions: false
+            residual_mode: modulated_attn
+            scale_attention_weights: true
+            trailing_activation: false
+            use_fc_after_attention: true
+          no_residual: true
+          normalize_function_variable_affinities: true
+          num_features_per_loc_head: 32
+          num_functions: 5
+          num_heads_in_loc: 4
+          num_loc_pods: 1
+          quantize_function_signature: false
+          quantize_variable_types: false
+          residual_mode: vanilla
+        no_residual: true
+        num_iterations: 8
+        num_types: 100
+        type_features: 24
+        type_inference_kwargs:
+          depth: 2
+        variable_features: 192
+    use_shared_cls_tokens: true
+    use_shared_prediction_head: true
